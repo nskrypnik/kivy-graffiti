@@ -23,17 +23,16 @@ class Graffiti(Widget):
         Main application widget - canvas where user can draw
     """
     def on_touch_move(self, touch):
-        # Check if im really in graffiti canvas
-        
-        if touch.x > self.parent.pos[0] and \
-            touch.x < (self.parent.pos[0] + self.parent.size[0]) and \
-            touch.y > (self.parent.pos[1]) and \
-            touch.y < (self.parent.pos[1] + self.parent.size[1]):
+        # Check if i'm really in graffiti canvas
+        #if touch.x > self.parent.pos[0] and \
+        #    touch.x < (self.parent.pos[0] + self.parent.size[0]) and \
+        #    touch.y > (self.parent.pos[1]) and \
+        #    touch.y < (self.parent.pos[1] + self.parent.size[1]):
             
-            with self.canvas:
-                Color(1, 1, 0)
-                d = 30.
-                Ellipse(pos=(touch.x - d / 2, touch.y - d / 2), size=(d, d))
+        with self.canvas:
+            Color(1, 1, 0)
+            d = 30.
+            Ellipse(pos=(touch.x - d / 2, touch.y - d / 2), size=(d, d))
     
     def on_touch_down(self, touch):
         """"""
