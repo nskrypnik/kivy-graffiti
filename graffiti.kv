@@ -1,29 +1,21 @@
+
+<Window>:
+    width: 400
+    height: 300
+
 <MainFrame>:
-  
-    StackLayout:
-        id: "sys_buttons"
-        padding: 10
-        spacing: 10
-        size_hint: 0.15, 1
-        canvas:
-            Color:
-                rgb: 0.5, 0.5, 0.5
-            Rectangle:
-                pos: self.pos
-                size: self.size
- 
-        Button:
-            id: new_btn
-            size_hint: 1, 0.1
-            text: "New"
- 
-        Button:
-            id: save_btn
-            size_hint: 1, 0.1
-            text: "Save"
+
+    thickness_slider: thickness_slider
+    graffiti_canvas: graffiti_canvas
+    slider_label: slider_label
+    choose_color_btn: choose_color_btn
+    toolbar: toolbar
  
     BoxLayout:
+        id: main_area
         orientation: "vertical"
+        size_hint: 0.85, 1
+        pos_hint: {'x': 0.15, 'y': 0}
  
         GraffitiBackground:
             size_hint: 1, 0.9
@@ -35,18 +27,72 @@
                     pos: self.pos
                 
             Graffiti:
-            	canvas:
-					Color:                	
-                		rgb: 1, 0, 1
-                    Rectangle:
-                        size: self.size
-                        pos: self.pos
- 
-        StackLayout:
+                id: graffiti_canvas
+                
+        GridLayout:
+        	id: toolbar
             size_hint: 1, 0.1
+            cols: 2
+            spacing: '5dp'
+            padding: '5dp'
             canvas:
                 Color:
                     rgb: 0.5, 0.5, 0.5
                 Rectangle:
                     size: self.size
                     pos: self.pos
+          	
+            ColorPickerButton:
+                size_hint: None, 1
+                size: '100dp', 0
+                id: choose_color_btn
+          	
+            BoxLayout:
+                id: thickness_container
+                spasing: 10
+                size_hint: 0.4, 1
+                
+                Label:
+                    id: slider_label
+                    text: "Thickness:"
+                    size_x: 100
+                
+                Slider:
+                    id: thickness_slider
+                    size_x: 300
+                    label: slider_label 
+                    min: 0
+                    max: 30
+
+    GridLayout:
+        id: "sys_buttons"
+        rows: 2
+        padding: 10
+        spacing: 10
+        size_hint: 0.15, 1
+        pos_hint: {'x': 0, 'y': 0}
+        canvas:
+            Color:
+                rgb: 0.5, 0.5, 0.5
+            Rectangle:
+                pos: self.pos
+                size: self.size
+ 
+        Button:
+            id: new_btn
+            size_hint: 1, None
+            size: 0, '100dp'
+            text: "New"
+ 
+        Button:
+            id: save_btn
+            size_hint: 1, None
+            size: 0, '100dp'
+            text: "Save"
+
+                    
+<ColorPickerContainer>:
+    orientation: "horizontal"
+    size_hint: 0.8, 0.8
+    arrow_pos: 'bottom_left'
+                
